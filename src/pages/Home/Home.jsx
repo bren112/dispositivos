@@ -2,8 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import supabase from '../../supabaseclient';
 import './Home.css';
+
 function Home() {
     const [departamentos, setDepartamentos] = useState([]);
+    const [searchTerm, setSearchTerm] = useState('');
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -23,24 +25,40 @@ function Home() {
         navigate(`/departamento/${id}`);
     };
 
+    // Filtra os departamentos com base no termo de busca
+    const filteredDepartamentos = departamentos.filter(dep =>
+        dep.nome.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+
     return (
         <div className="home-container">
             <h2 className="home-title">Departamentos</h2>
+            
+            {/* Campo de busca */}
+            <input
+                type="text"
+                placeholder="Buscar Departamento"
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                className="search-input"
+            />
+
             <div className="department-list">
-                {departamentos.map((dep) => (
-                    <div className="deps">
-                <button 
-    key={dep.id} 
-    className="department-button"
-    style={{ 
-        backgroundColor: '#7dba06'  
-    }}
-    onClick={() => handleClick(dep.id)}
->
-    {dep.nome}
-</button>
-</div>
-                ))}
+                {filteredDepartamentos.length > 0 ? (
+                    filteredDepartamentos.map((dep) => (
+                        <div className="deps" key={dep.id}>
+                            <button
+                                className="department-button"
+                                style={{ backgroundColor: '#7dba06' }}
+                                onClick={() => handleClick(dep.id)}
+                            >
+                                {dep.nome}
+                            </button>
+                        </div>
+                    ))
+                ) : (
+                    <p>Nenhum departamento encontrado.</p> // Mensagem caso não encontre nada
+                )}
             </div>
         </div>
     );
