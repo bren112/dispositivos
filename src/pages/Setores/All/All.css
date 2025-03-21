@@ -1,0 +1,152 @@
+/* Estilo para a tabela */
+table {
+    width: 98%;  /* Reduzi a largura para evitar que encoste nas bordas */
+    max-width: 100%;
+    border-collapse: collapse;
+    margin: 20px auto; /* Centraliza a tabela e mantém espaçamento */
+    font-family: Arial, sans-serif;
+    font-size: 12px; /* Aumentei um pouco o tamanho da fonte para melhor legibilidade */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Adicionando sombra para dar um efeito mais profissional */
+    table-layout: fixed; /* Faz com que as células ajustem-se proporcionalmente */
+}
+
+table th, table td {
+    padding: 8px 10px; /* Aumentei um pouco o espaçamento das células */
+    text-align: left;
+    border: 1px solid #ddd;
+    font-weight: normal;
+}
+
+table th {
+    background-color: rgb(42, 41, 41); /* Cor de fundo escura */
+    color: white;
+    font-weight: bold;
+    text-transform: uppercase; /* Texto em maiúsculo */
+    font-size: 13px; /* Aumentei o tamanho da fonte para os cabeçalhos */
+}
+
+/* Ajuste das colunas específicas */
+table td:nth-child(1), table th:nth-child(1) {
+    width: 12%;  /* Coluna de Identificador */
+}
+
+table td:nth-child(2), table th:nth-child(2) {
+    width: 10%;  /* Coluna de Tipo */
+}
+
+table td:nth-child(3), table th:nth-child(3) {
+    width: 14%;  /* Coluna de Modelo */
+}
+
+table td:nth-child(4), table th:nth-child(4) {
+    width: 14%;  /* Coluna de Número de Série */
+}
+
+table td:nth-child(5), table th:nth-child(5) {
+    width: 12%;  /* Coluna de Usuário */
+}
+
+table td:nth-child(6), table th:nth-child(6) {
+    width: 20%;  /* Coluna de Descrição */
+}
+
+table td:nth-child(7), table th:nth-child(7) {
+    width: 10%;  /* Coluna de Data Alugado */
+}
+
+table td:nth-child(8), table th:nth-child(8) {
+    width: 12%;  /* Coluna de MAC Address */
+}
+
+table td:nth-child(9), table th:nth-child(9) {
+    width: 15%;  /* Coluna de Inquilino */
+}
+
+table td:nth-child(10), table th:nth-child(10) {
+    width: 15%;  /* Coluna de Ações */
+}
+
+tbody tr:nth-child(even) {
+    background-color: #f9f9f9; /* Um tom mais suave para as linhas alternadas */
+}
+
+tbody tr:hover {
+    background-color: #e0e0e0; /* Tom mais claro no hover */
+    cursor: pointer;
+}
+
+/* Estilos do modal */
+.fixed {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 9999;
+    background-color: rgba(0, 0, 0, 0.5); /* Fundo escuro e translúcido para o modal */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background-color: #fff;
+    margin: 10px;
+    padding: 30px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    max-width: 700px; /* Aumentei a largura do modal */
+    width: 100%;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); /* Sombra para dar profundidade ao modal */
+    position: relative;
+    max-height: 80vh; /* Limita a altura do modal para 80% da altura da tela */
+    overflow-y: auto; /* Adiciona scroll vertical caso o conteúdo ultrapasse o limite */
+}
+
+.close {
+    color: #aaa;
+    font-size: 32px;
+    font-weight: bold;
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-family: Arial, sans-serif;
+    cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+
+
+/* Ajuste nos inputs do formulário */
+input[type="text"], input[type="number"] {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    font-size: 14px;
+}
+
+input[type="text"]:focus, input[type="number"]:focus {
+    outline: none;
+    border-color: var(--verde); /* Destacar a borda ao focar */
+    box-shadow: 0 0 5px rgba(6, 255, 52, 0.5);
+}
+
+form div {
+    margin-bottom: 15px;
+}
+
+/* Estilos para os labels */
+label {
+    font-weight: bold;
+    font-size: 14px;
+    color: #333;
+}

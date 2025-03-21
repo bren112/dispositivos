@@ -1,0 +1,58 @@
+.home-container {
+    padding: 16px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.home-title {
+    font-size: 4.5rem;
+    font-weight: bold;
+    margin-bottom: 38px;
+    text-align: center;
+}
+
+.department-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 16px;
+    margin: 16px;
+}
+
+.deps {
+    display: flex;
+    justify-content: center;
+    flex-basis: calc(33.33% - 16px);
+}
+
+.department-button {
+    width: 100%;
+    max-width: 200px;
+    height: 80px;
+    padding: 8px;
+    border-radius: 8px;
+    color: white;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    transition: opacity 0.3s;
+    font-size: 1.2rem;
+    text-align: center;
+    white-space: nowrap;
+}
+
+.department-button:hover {
+    opacity: 0.8;
+}
+
+@media (max-width: 768px) {
+    .deps {
+        flex-basis: calc(50% - 16px);
+    }
+}
+
+@media (max-width: 500px) {
+    .deps {
+        flex-basis: 100%;
+    }
+}

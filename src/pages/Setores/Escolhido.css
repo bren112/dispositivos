@@ -1,0 +1,32 @@
+.container-escolhido{
+    display: flex;justify-content: center;margin: 2pc;flex-direction: column; 
+}
+.container-escolhido h1{
+    text-align: center;
+    font-size: 2.4pc;
+}
+.container-escolhido span{
+    font-weight: 600;
+}
+.acoes{
+    display: flex;
+    justify-content: space-evenly;
+    margin-left: 5pc;
+    margin-right: 5pc;
+    margin-top: 2pc;
+}
+.acoes button{
+    width: 5pc;
+    height: 5pc;
+    border-radius: 10px;
+}
+#radin img{
+    width: 3pc;
+}
+.botao{
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    text-align: center;
+    color: black;
+}
