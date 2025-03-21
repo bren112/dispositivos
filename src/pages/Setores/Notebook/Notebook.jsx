@@ -6,16 +6,16 @@ const volt = localStorage.getItem('departamentoId');
 function Notebook() {
     const [notebooks, setNotebooks] = useState([]);
     const [departamentoId, setDepartamentoId] = useState(null);
-    const [alugadas, setAlugadas] = useState(0); // Contador de notebooks alugados
-    const [departamentoNome, setDepartamentoNome] = useState(''); // Nome do departamento
+    const [alugadas, setAlugadas] = useState(0); 
+    const [departamentoNome, setDepartamentoNome] = useState(''); 
 
     useEffect(() => {
-        // Recupera o ID do departamento salvo no localStorage
+  
         const depId = localStorage.getItem('departamentoId');
         if (depId) {
             setDepartamentoId(depId);
             fetchNotebooks(depId);
-            fetchDepartamentoNome(depId); // Buscar o nome do departamento
+            fetchDepartamentoNome(depId); 
         }
     }, []);
 
@@ -24,25 +24,23 @@ function Notebook() {
             .from('aparelho')
             .select('*')
             .eq('departamento_id', depId)
-            .eq('tipo', 'Notebook'); // Filtra apenas notebooks
-
+            .eq('tipo', 'Notebook'); 
         if (error) {
             console.error('Erro ao buscar notebooks:', error.message);
         } else {
             setNotebooks(data);
-            // Conta quantos notebooks estão alugados (considerando que "dia_alugado" indica aluguel)
+       
             const alugadasCount = data.filter(notebook => notebook.dia_alugado).length;
             setAlugadas(alugadasCount);
         }
     };
 
-    // Função para buscar o nome do departamento
     const fetchDepartamentoNome = async (depId) => {
         const { data, error } = await supabase
             .from('departamento')
             .select('nome')
             .eq('id', depId)
-            .single(); // Pega apenas um resultado
+            .single(); 
 
         if (error) {
             console.error('Erro ao buscar nome do departamento:', error.message);

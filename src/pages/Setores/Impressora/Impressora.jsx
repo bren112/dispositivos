@@ -18,31 +18,31 @@ function Impressora() {
         }
     }, []);
 
-    // Função para buscar impressoras do departamento
+    
     const fetchImpressoras = async (depId) => {
         const { data, error } = await supabase
             .from('aparelho')
             .select('*')
             .eq('departamento_id', depId)
-            .eq('tipo', 'Impressora'); // Filtra apenas impressoras
+            .eq('tipo', 'Impressora'); 
 
         if (error) {
             console.error('Erro ao buscar impressoras:', error.message);
         } else {
             setImpressoras(data);
-            // Conta quantas impressoras estão alugadas
+    
             const alugadasCount = data.filter(impressora => impressora.dia_alugado).length;
             setAlugadas(alugadasCount);
         }
     };
 
-    // Função para buscar o nome do departamento
+
     const fetchDepartamentoNome = async (depId) => {
         const { data, error } = await supabase
             .from('departamento')
             .select('nome')
             .eq('id', depId)
-            .single(); // Busca um único resultado
+            .single(); 
 
         if (error) {
             console.error('Erro ao buscar nome do departamento:', error.message);

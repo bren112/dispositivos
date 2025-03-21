@@ -69,11 +69,10 @@ p{
   padding: 20px;
   background-color: #fff;
   border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for form */
-}
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); }
 
 h2 {
-  color: #333; /* Darker text for better readability */
+  color: #333;
   text-align: center;
   font-size: 24px;
   margin-bottom: 20px;
@@ -112,4 +111,8 @@ select {
   color: #333;
   margin-top: 10px;
   text-align: center;
+}
+
+button{
+  cursor: pointer;
 }

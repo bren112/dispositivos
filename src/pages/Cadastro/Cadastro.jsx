@@ -3,27 +3,19 @@ import supabase from '../../supabaseclient';
 
 function CadastroDep() {
     const [nome, setNome] = useState('');
-    const [cor, setCor] = useState('');
-    
-    const cores = [
-        'Red', 'Blue', 'Green', 'Yellow', 'Purple', 'Orange', 'Black', 'White', 'Gray', 'Pink',
-        'Cyan', 'Magenta', 'Lime', 'Teal', 'Brown', 'Azure', 'Beige', 'Coral', 'Crimson', 'Gold',
-        'Indigo', 'Ivory', 'Khaki', 'Lavender', 'Maroon', 'Navy', 'Olive', 'Plum', 'Salmon', 'Silver',
-        'Tan', 'Turquoise', 'Violet'
-    ];
-    
+
     const handleSubmit = async (e) => {
         e.preventDefault();
         const { data, error } = await supabase
             .from('departamento')
-            .insert([{ nome, cor }]);
+            .insert([{ nome }]);
         
         if (error) {
             console.error('Erro ao cadastrar departamento:', error.message);
         } else {
             console.log('Departamento cadastrado com sucesso:', data);
             setNome('');
-            setCor('');
+          
         }
     };
     
@@ -46,21 +38,7 @@ function CadastroDep() {
                         required
                     />
                 </div>
-                <div className="form-group">
-                    <label htmlFor="cor" className="text-sm font-medium">Cor</label>
-                    <select 
-                        id="cor"
-                        value={cor} 
-                        onChange={(e) => setCor(e.target.value)} 
-                        className="w-full p-2 border rounded-md"
-                        required
-                    ><br />
-                        <option value="">Selecione uma cor</option><br /><br />
-                        {cores.map((cor) => (
-                            <option key={cor} value={cor}>{cor}</option>
-                        ))}
-                    </select>
-                </div>
+             
                 <button id="submit-button" type="submit">
                     Cadastrar
                 </button>

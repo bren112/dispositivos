@@ -4,27 +4,27 @@ import supabase from '../../../supabaseclient';
 function Celular() {
     const [celulares, setCelulares] = useState([]);
     const [departamentoId, setDepartamentoId] = useState(null);
-    const [departamentoNome, setDepartamentoNome] = useState(''); // Estado para nome do departamento
-    const [alugadas, setAlugadas] = useState(0); // Contador de celulares alugados
+    const [departamentoNome, setDepartamentoNome] = useState('');
+    const [alugadas, setAlugadas] = useState(0); 
     const volt = localStorage.getItem('departamentoId');
 
     useEffect(() => {
-        // Recupera o ID do departamento salvo no localStorage
+   
         const depId = localStorage.getItem('departamentoId');
         if (depId) {
             setDepartamentoId(depId);
             fetchCelulares(depId);
-            fetchDepartamentoNome(depId); // Agora busca o nome do departamento
+            fetchDepartamentoNome(depId); 
         }
     }, []);
 
-    // Função para buscar celulares do departamento
+
     const fetchCelulares = async (depId) => {
         const { data, error } = await supabase
             .from('aparelho')
             .select('*')
             .eq('departamento_id', depId)
-            .eq('tipo', 'Celular'); // Filtra apenas celulares
+            .eq('tipo', 'Celular'); 
 
         if (error) {
             console.error('Erro ao buscar celulares:', error.message);
@@ -35,14 +35,13 @@ function Celular() {
         }
     };
 
-    // Função para buscar o nome do departamento
+    
     const fetchDepartamentoNome = async (depId) => {
         const { data, error } = await supabase
             .from('departamento')
             .select('nome')
             .eq('id', depId)
-            .single(); // Busca um único resultado
-
+            .single(); 
         if (error) {
             console.error('Erro ao buscar nome do departamento:', error.message);
         } else {

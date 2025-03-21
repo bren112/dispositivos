@@ -5,44 +5,44 @@ const volt = localStorage.getItem('departamentoId');
 function Computador() {
     const [computadores, setComputadores] = useState([]);
     const [departamentoId, setDepartamentoId] = useState(null);
-    const [alugadas, setAlugadas] = useState(0); // Contador de computadores alugados
-    const [departamentoNome, setDepartamentoNome] = useState(''); // Nome do departamento
+    const [alugadas, setAlugadas] = useState(0); 
+    const [departamentoNome, setDepartamentoNome] = useState(''); 
 
     useEffect(() => {
-        // Recupera o ID do departamento salvo no localStorage
+
         const depId = localStorage.getItem('departamentoId');
         if (depId) {
             setDepartamentoId(depId);
             fetchComputadores(depId);
-            fetchDepartamentoNome(depId); // Agora está sendo chamada corretamente!
+            fetchDepartamentoNome(depId);
         }
     }, []);
 
-    // Função para buscar computadores
+ 
     const fetchComputadores = async (depId) => {
         const { data, error } = await supabase
             .from('aparelho')
             .select('*')
             .eq('departamento_id', depId)
-            .eq('tipo', 'Computador'); // Filtra apenas computadores
+            .eq('tipo', 'Computador'); 
 
         if (error) {
             console.error('Erro ao buscar computadores:', error.message);
         } else {
             setComputadores(data);
-            // Conta quantos computadores estão alugados (considerando que "dia_alugado" indica aluguel)
+         
             const alugadasCount = data.filter(computador => computador.dia_alugado).length;
             setAlugadas(alugadasCount);
         }
     };
 
-    // Função para buscar o nome do departamento (agora está FORA de fetchComputadores)
+   
     const fetchDepartamentoNome = async (depId) => {
         const { data, error } = await supabase
             .from('departamento')
             .select('nome')
             .eq('id', depId)
-            .single(); // Pega apenas um resultado
+            .single(); 
 
         if (error) {
             console.error('Erro ao buscar nome do departamento:', error.message);
@@ -61,7 +61,7 @@ function Computador() {
                     Computadores do Setor: <span className="font-bold">{departamentoNome}</span>
                 </h2>
                 
-                {/* Mostra a quantidade de computadores alugados */}
+            
                 <div className="contadorContainer">
                     <div className="subcontador">
                         <p className="text-lg font-semibold mb-2">

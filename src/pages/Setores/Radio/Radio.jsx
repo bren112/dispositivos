@@ -5,44 +5,44 @@ const volt = localStorage.getItem('departamentoId');
 function Radio() {
     const [notebooks, setNotebooks] = useState([]);
     const [departamentoId, setDepartamentoId] = useState(null);
-    const [alugadas, setAlugadas] = useState(0); // Contador de notebooks alugados
-    const [departamentoNome, setDepartamentoNome] = useState(''); // Nome do departamento
+    const [alugadas, setAlugadas] = useState(0); 
+    const [departamentoNome, setDepartamentoNome] = useState(''); 
 
     useEffect(() => {
-        // Recupera o ID do departamento salvo no localStorage
+
         const depId = localStorage.getItem('departamentoId');
         if (depId) {
             setDepartamentoId(depId);
             fetchNotebooks(depId);
-            fetchDepartamentoNome(depId); // Agora está sendo chamada corretamente!
+            fetchDepartamentoNome(depId);
         }
     }, []);
 
-    // Função para buscar notebooks (na verdade, rádios)
+ 
     const fetchNotebooks = async (depId) => {
         const { data, error } = await supabase
             .from('aparelho')
             .select('*')
             .eq('departamento_id', depId)
-            .eq('tipo', 'Rádio'); // Filtra apenas rádios
+            .eq('tipo', 'Rádio'); 
 
         if (error) {
             console.error('Erro ao buscar rádios:', error.message);
         } else {
             setNotebooks(data);
-            // Conta quantos rádios estão alugados
+       
             const alugadasCount = data.filter(notebook => notebook.dia_alugado).length;
             setAlugadas(alugadasCount);
         }
     };
 
-    // Função para buscar o nome do departamento (agora está FORA de fetchNotebooks)
+   
     const fetchDepartamentoNome = async (depId) => {
         const { data, error } = await supabase
             .from('departamento')
             .select('nome')
             .eq('id', depId)
-            .single(); // Pega apenas um resultado
+            .single();
 
         if (error) {
             console.error('Erro ao buscar nome do departamento:', error.message);
