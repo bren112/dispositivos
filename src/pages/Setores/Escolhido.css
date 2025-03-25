@@ -11,6 +11,7 @@
 .acoes{
     display: flex;
     justify-content: space-evenly;
+    flex-direction: row;
     margin-left: 5pc;
     margin-right: 5pc;
     margin-top: 2pc;
@@ -29,4 +30,23 @@
     gap: 6px;
     text-align: center;
     color: black;
+}
+#impressora{
+    position: relative;
+    right: 0pc;
+}
+@media screen and (max-width: 768px) {
+
+.acoes{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    margin-left: 5pc;
+    margin-right: 5pc;
+    margin-top: 2pc;
+}
+#impressora{
+    position: relative;
+    right: -3pc;
+}
 }
