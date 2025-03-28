@@ -126,16 +126,16 @@ function All() {
                     <tbody>
                         {aparelhos.map((aparelho) => (
                             <tr key={aparelho.id}>
-                                <td>{aparelho.identificador}</td>
-                                <td>{aparelho.tipo}</td>
-                                <td>{aparelho.modelo}</td>
-                                <td>{aparelho.numero_serie}</td>
-                                <td>{aparelho.usuario}</td>
-                                <td>{aparelho.desc_aparelho}</td>
-                                <td>{aparelho.dia_alugado}</td>
-                                <td>{aparelho.mac_addres}</td>
-                                <td>{aparelho.inquilino}</td>
-                                <td>
+                                <td data-label="Identificador">{aparelho.identificador}</td>
+                                <td data-label="Tipo">{aparelho.tipo}</td>
+                                <td data-label="Modelo">{aparelho.modelo}</td>
+                                <td data-label="Número de Série">{aparelho.numero_serie}</td>
+                                <td data-label="Usuário">{aparelho.usuario}</td>
+                                <td data-label="Descrição">{aparelho.desc_aparelho}</td>
+                                <td data-label="Data Alugado">{aparelho.dia_alugado}</td>
+                                <td data-label="MAC Address">{aparelho.mac_addres}</td>
+                                <td data-label="Inquilino">{aparelho.inquilino}</td>
+                                <td data-label="Ações">
                                     <button onClick={() => handleEdit(aparelho.id)}>Editar</button>
                                     <button onClick={() => handleDelete(aparelho.id)}>Excluir</button>
                                 </td>

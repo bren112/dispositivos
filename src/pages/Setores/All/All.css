@@ -1,78 +1,74 @@
-/* Estilo para a tabela */
+/* Contêiner responsivo */
+.table-container {
+    width: 100%;
+    overflow-x: auto; /* Permite rolagem horizontal em telas grandes */
+}
+
+/* Estilo padrão da tabela */
 table {
-    width: 98%;  /* Reduzi a largura para evitar que encoste nas bordas */
-    max-width: 100%;
+    width: 100%;
     border-collapse: collapse;
-    margin: 20px auto; /* Centraliza a tabela e mantém espaçamento */
+    margin: 20px auto;
     font-family: Arial, sans-serif;
-    font-size: 12px; /* Aumentei um pouco o tamanho da fonte para melhor legibilidade */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Adicionando sombra para dar um efeito mais profissional */
-    table-layout: fixed; /* Faz com que as células ajustem-se proporcionalmente */
+    font-size: 12px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    table-layout: auto;
 }
 
 table th, table td {
-    padding: 8px 10px; /* Aumentei um pouco o espaçamento das células */
+    padding: 8px 10px;
     text-align: left;
     border: 1px solid #ddd;
-    font-weight: normal;
 }
 
 table th {
-    background-color: rgb(42, 41, 41); /* Cor de fundo escura */
+    background-color: rgb(42, 41, 41);
     color: white;
     font-weight: bold;
-    text-transform: uppercase; /* Texto em maiúsculo */
-    font-size: 13px; /* Aumentei o tamanho da fonte para os cabeçalhos */
+    text-transform: uppercase;
+    font-size: 13px;
 }
 
-/* Ajuste das colunas específicas */
-table td:nth-child(1), table th:nth-child(1) {
-    width: 12%;  /* Coluna de Identificador */
-}
+/* 🎯 Estilos responsivos para mobile */
+@media screen and (max-width: 768px) {
+    table, thead, tbody, th, td, tr {
+        display: block;
+    }
 
-table td:nth-child(2), table th:nth-child(2) {
-    width: 10%;  /* Coluna de Tipo */
-}
+    table thead {
+        display: none; /* Oculta o cabeçalho da tabela */
+    }
 
-table td:nth-child(3), table th:nth-child(3) {
-    width: 14%;  /* Coluna de Modelo */
-}
+    tbody {
+        display: flex;
+        flex-direction: column;
+        gap: 10px; /* Espaçamento entre os cards */
+    }
 
-table td:nth-child(4), table th:nth-child(4) {
-    width: 14%;  /* Coluna de Número de Série */
-}
+    table tr {
+        background: white;
+        padding: 15px;
+        border-radius: 8px;
+        box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+        border: 1px solid #ddd;
+        display: flex;
+        flex-direction: column;
+    }
 
-table td:nth-child(5), table th:nth-child(5) {
-    width: 12%;  /* Coluna de Usuário */
-}
+    table td {
+        display: flex;
+        justify-content: space-between;
+        padding: 8px 0;
+        border: none;
+        font-size: 14px;
+    }
 
-table td:nth-child(6), table th:nth-child(6) {
-    width: 20%;  /* Coluna de Descrição */
-}
-
-table td:nth-child(7), table th:nth-child(7) {
-    width: 10%;  /* Coluna de Data Alugado */
-}
-
-table td:nth-child(8), table th:nth-child(8) {
-    width: 12%;  /* Coluna de MAC Address */
-}
-
-table td:nth-child(9), table th:nth-child(9) {
-    width: 15%;  /* Coluna de Inquilino */
-}
-
-table td:nth-child(10), table th:nth-child(10) {
-    width: 15%;  /* Coluna de Ações */
-}
-
-tbody tr:nth-child(even) {
-    background-color: #f9f9f9; /* Um tom mais suave para as linhas alternadas */
-}
-
-tbody tr:hover {
-    background-color: #e0e0e0; /* Tom mais claro no hover */
-    cursor: pointer;
+    table td::before {
+        content: attr(data-label);
+        font-weight: bold;
+        text-transform: uppercase;
+        color: #333;
+    }
 }
 
 .modal {
