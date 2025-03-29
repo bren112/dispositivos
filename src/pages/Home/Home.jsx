@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import supabase from '../../supabaseclient';
 import './Home.css';
-
+import { Link } from 'react-router-dom';
 function Home() {
     const [departamentos, setDepartamentos] = useState([]);
     const [searchTerm, setSearchTerm] = useState('');
@@ -42,7 +42,9 @@ function Home() {
                 onChange={(e) => setSearchTerm(e.target.value)}
                 className="search-input"
             />
-
+            <Link to='/todos'>
+            <button>Todos</button>
+            </Link>
             <div className="department-list">
                 {filteredDepartamentos.length > 0 ? (
                     filteredDepartamentos.map((dep) => (

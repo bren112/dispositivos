@@ -1,0 +1,12 @@
+.filter-butons{
+    display: flex
+  ;
+      justify-content: space-around;
+  }
+  .filter-butons button{    
+    background-color: #7dba06;
+    height: 4pc;
+    width: 8pc;
+    border: none;
+    font-size: 1.1pc;
+    border-radius: 1pc;}
