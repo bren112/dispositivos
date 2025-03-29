@@ -12,6 +12,7 @@ import Computador from "./pages/Setores/Computadores/Computador";
 import Celular from "./pages/Setores/Celular/Celular";
 import Notebook from "./pages/Setores/Notebook/Notebook";
 import Radio from "./pages/Setores/Radio/Radio";
+import Todos from "./pages/Setores/Todos/Todos";
 function App() {
   return (
     <BrowserRouter>
@@ -30,6 +31,7 @@ function App() {
             <Route path="/celular" element={<Celular />} />
             <Route path="/notebook" element={<Notebook />} />
             <Route path="/radio" element={<Radio />} />
+            <Route path="/todos" element={<Todos />} />
 
           </Routes>
         </div>

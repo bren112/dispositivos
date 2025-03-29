@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import supabase from '../../../supabaseclient';
-import { Link } from 'react-router-dom';
+import './Todos.css'
 function Todos() {
     const [aparelhos, setAparelhos] = useState([]);
     const [filtro, setFiltro] = useState('todos');
@@ -36,6 +36,9 @@ function Todos() {
                 {`
                     .filter-buttons {
                         display: flex;
+                        flex-direction:row;
+                        flex-wrap: wrap;
+                        gap: 1pc;
                         justify-content: space-around;
                     }
                     .filter-buttons button {    
@@ -47,7 +50,7 @@ function Todos() {
                         border-radius: 1pc;
                     }
                         table{
-                        margin:2pc;
+                        width:auto
                         }
                 `}
             </style>

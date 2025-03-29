@@ -1,0 +1,14 @@
+.filter-butons{
+    display: flex;
+    flex-direction: row;
+      justify-content: space-around;
+  }
+
+@media (max-width: 768px) {
+  .filter-butons{
+    display: flex
+  ;
+  flex-direction: column;
+      justify-content: space-around;
+  }
+}
